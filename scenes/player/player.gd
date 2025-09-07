@@ -105,4 +105,5 @@ func _on_hazard_detector_area_entered(area: Area2D) -> void:
 		print("Ha morido :(")
 		get_tree().paused = true
 		await get_tree().create_timer(2).timeout
+		get_tree().paused = false
 		get_tree().change_scene_to_file("res://scenes/ui/menu/start_menu.tscn")
