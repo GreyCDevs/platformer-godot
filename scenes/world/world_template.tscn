@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://qvf4ea06wf2a"]
+[gd_scene load_steps=10 format=3 uid="uid://qvf4ea06wf2a"]
 
 [ext_resource type="Script" uid="uid://dcbwj3mc75n72" path="res://scenes/world/world.gd" id="1_wx2y6"]
 [ext_resource type="PackedScene" uid="uid://1rrvx57k2cva" path="res://scenes/player/player.tscn" id="2_dcncw"]
+[ext_resource type="PackedScene" uid="uid://m0amkyentqqi" path="res://scenes/ui/game_over/game_over.tscn" id="4_hkyxq"]
 [ext_resource type="PackedScene" uid="uid://romfrcc8qrho" path="res://scenes/ui/level/level_completed.tscn" id="5_vtms1"]
 [ext_resource type="PackedScene" uid="uid://bimx81jm3ddyv" path="res://scenes/tilemap/tilemap.tscn" id="6_k8b1u"]
 
@@ -84,6 +85,9 @@ script = ExtResource("1_wx2y6")
 [node name="LevelCompleted" parent="CanvasLayer" instance=ExtResource("5_vtms1")]
 visible = false
 
+[node name="GameOver" parent="CanvasLayer" instance=ExtResource("4_hkyxq")]
+visible = false
+
 [node name="StartIn" type="ColorRect" parent="CanvasLayer"]
 unique_name_in_owner = true
 anchors_preset = 15
@@ -106,7 +110,7 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Start in: 3"
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="TimerContainer" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -116,7 +120,7 @@ offset_bottom = 40.0
 grow_horizontal = 2
 color = Color(1, 1, 1, 0)
 
-[node name="TimerLabel" type="Label" parent="CanvasLayer/ColorRect"]
+[node name="TimerLabel" type="Label" parent="CanvasLayer/TimerContainer"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = -28.0
@@ -125,7 +129,7 @@ offset_right = 33.0
 offset_bottom = 20.0
 text = "Time: 00:00"
 
-[node name="Timer" type="Timer" parent="CanvasLayer"]
+[node name="TimeCount" type="Timer" parent="CanvasLayer"]
 autostart = true
 
 [node name="LevelTileMap" parent="." instance=ExtResource("6_k8b1u")]
@@ -136,4 +140,4 @@ libraries = {
 &"": SubResource("AnimationLibrary_wx2y6")
 }
 
-[connection signal="timeout" from="CanvasLayer/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/TimeCount" to="." method="_on_timer_timeout"]
