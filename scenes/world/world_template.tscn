@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://qvf4ea06wf2a"]
+[gd_scene load_steps=11 format=3 uid="uid://qvf4ea06wf2a"]
 
 [ext_resource type="Script" uid="uid://dcbwj3mc75n72" path="res://scenes/world/world.gd" id="1_wx2y6"]
 [ext_resource type="PackedScene" uid="uid://1rrvx57k2cva" path="res://scenes/player/player.tscn" id="2_dcncw"]
 [ext_resource type="PackedScene" uid="uid://m0amkyentqqi" path="res://scenes/ui/game_over/game_over.tscn" id="4_hkyxq"]
 [ext_resource type="PackedScene" uid="uid://romfrcc8qrho" path="res://scenes/ui/level/level_completed.tscn" id="5_vtms1"]
+[ext_resource type="PackedScene" uid="uid://dx021munrhlss" path="res://scenes/ui/icons/health/sardine_health.tscn" id="5_wx2y6"]
 [ext_resource type="PackedScene" uid="uid://bimx81jm3ddyv" path="res://scenes/tilemap/tilemap.tscn" id="6_k8b1u"]
 
 [sub_resource type="Animation" id="Animation_hkyxq"]
@@ -128,6 +129,8 @@ offset_top = 3.0
 offset_right = 33.0
 offset_bottom = 20.0
 text = "Time: 00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LifeCounter" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 1
@@ -140,17 +143,24 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 color = Color(1, 1, 1, 0)
 
-[node name="LifeCounterLabel" type="Label" parent="CanvasLayer/LifeCounter"]
-unique_name_in_owner = true
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/LifeCounter"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.0454545
+anchor_right = 0.954545
+anchor_bottom = 1.07143
 grow_horizontal = 2
-grow_vertical = 2
-text = "Life: 0/0"
+metadata/_edit_use_anchors_ = true
+
+[node name="LifeCounterLabel" type="Label" parent="CanvasLayer/LifeCounter/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SardineHealth" parent="CanvasLayer/LifeCounter/CenterContainer" instance=ExtResource("5_wx2y6")]
+position = Vector2(2, 6)
 
 [node name="TimeCount" type="Timer" parent="CanvasLayer"]
 autostart = true

@@ -21,7 +21,7 @@ func _ready() -> void:
 	Events.level_completed.connect(show_level_completed)
 	Events.game_over.connect(show_game_over)
 	Events.life_lost.connect(handle_life_lost)
-	life_counter_label.text = "Life: %1d/%1d" % [GameState.player_lives, GameState.MAX_PLAYER_LIVES]
+	life_counter_label.text = "%1d/%1d" % [GameState.player_lives, GameState.MAX_PLAYER_LIVES]
 	get_tree().paused = true
 	animation_player.play("countdown")
 	await get_tree().create_timer(3.0).timeout
@@ -53,7 +53,7 @@ func show_game_over() -> void:
 	game_over.to_start_menu_button.grab_focus()
 
 func handle_life_lost() -> void:
-	life_counter_label.text = "Life: %1d/%1d" % [GameState.player_lives, GameState.MAX_PLAYER_LIVES]
+	life_counter_label.text = "%1d/%1d" % [GameState.player_lives, GameState.MAX_PLAYER_LIVES]
 
 func _on_timer_timeout() -> void:
 	time_passed += 1
