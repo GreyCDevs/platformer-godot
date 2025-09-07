@@ -18,6 +18,7 @@ extends Node2D
 
 
 
+
 @onready var life_counter_label: Label = %LifeCounterLabel
 @onready var collectibles_counter_label_label: Label = %CollectiblesCounterLabelLabel
 
@@ -71,9 +72,11 @@ func show_level_completed() -> void:
 	
 func handle_pause_menu_opened() -> void:
 
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") and not get_tree().paused:
+		pause_menu.resume_button.grab_focus()
 		get_tree().paused = true
 		pause_menu.show()
+	
 	elif Input.is_action_just_pressed("pause") and get_tree().paused:
 		pause_menu.hide()
 		get_tree().paused = false

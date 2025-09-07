@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dcbwj3mc75n72" path="res://scenes/world/world.gd" id="1_wx2y6"]
 [ext_resource type="PackedScene" uid="uid://1rrvx57k2cva" path="res://scenes/player/player.tscn" id="2_dcncw"]
+[ext_resource type="PackedScene" uid="uid://bcimr0tmqsfn5" path="res://scenes/ui/menu/pausemenu/pause_menu.tscn" id="3_t6xbs"]
 [ext_resource type="PackedScene" uid="uid://m0amkyentqqi" path="res://scenes/ui/game_over/game_over.tscn" id="4_hkyxq"]
 [ext_resource type="PackedScene" uid="uid://romfrcc8qrho" path="res://scenes/ui/level/level_completed.tscn" id="5_vtms1"]
 [ext_resource type="PackedScene" uid="uid://dx021munrhlss" path="res://scenes/ui/icons/health/sardine_health.tscn" id="5_wx2y6"]
 [ext_resource type="PackedScene" uid="uid://cmo3a5is2oema" path="res://scenes/ui/icons/collectibles/sardine_collectible.tscn" id="6_dcncw"]
 [ext_resource type="PackedScene" uid="uid://bimx81jm3ddyv" path="res://scenes/tilemap/tilemap.tscn" id="6_k8b1u"]
-[ext_resource type="Script" uid="uid://spoxnpa8236s" path="res://scenes/ui/menu/pausemenu/pause_menu.gd" id="8_t6xbs"]
 
 [sub_resource type="Animation" id="Animation_hkyxq"]
 length = 0.001
@@ -75,7 +75,6 @@ _data = {
 }
 
 [node name="WorldTemplate" type="Node2D"]
-process_mode = 1
 script = ExtResource("1_wx2y6")
 
 [node name="player" parent="." instance=ExtResource("2_dcncw")]
@@ -86,27 +85,8 @@ script = ExtResource("1_wx2y6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" type="CenterContainer" parent="CanvasLayer"]
-process_mode = 2
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_t6xbs")]
 visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("8_t6xbs")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CanvasLayer/PauseMenu/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Reset"
-
-[node name="Button2" type="Button" parent="CanvasLayer/PauseMenu/VBoxContainer"]
-layout_mode = 2
-text = "Back to Main Menu"
 
 [node name="GameOver" parent="CanvasLayer" instance=ExtResource("4_hkyxq")]
 visible = false
