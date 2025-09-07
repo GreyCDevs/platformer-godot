@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dx021munrhlss"]
 
-[ext_resource type="Texture2D" uid="uid://m8rhqxf06ybj" path="res://assets/images/collectibles/sardine/sardine.png" id="1_uxbxy"]
+[ext_resource type="Texture2D" uid="uid://m8rhqxf06ybj" path="res://assets/images/collectibles/sardine_skeleton/sardine_skeleton.png" id="1_uxbxy"]
 
 [node name="SardineHealth" type="Sprite2D"]
 scale = Vector2(0.5, 0.5)

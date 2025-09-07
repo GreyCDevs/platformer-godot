@@ -9,7 +9,7 @@ func _ready() -> void:
 func _on_start_game_button_pressed() -> void:
 	GameState.reset_player_lives()
 	await LevelTransition.fade_to_black()
-	get_tree().change_scene_to_file("res://scenes/levels/test_level.tscn")
+	get_tree().change_scene_to_file(GameState.game_data[GameState.LEVELS.LEVEL_ONE].scene)
 	LevelTransition.fade_from_black()
 
 func _on_quit_game_button_pressed() -> void:

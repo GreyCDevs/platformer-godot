@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmo3a5is2oema"]
+
+[ext_resource type="Texture2D" uid="uid://bo22xxh2ndtrk" path="res://assets/images/collectibles/sardine/sardine.png" id="1_jq4y1"]
+
+[node name="SardineHealth" type="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_jq4y1")

@@ -5,6 +5,8 @@ extends Node2D
 @onready var level_completed: ColorRect = $CanvasLayer/LevelCompleted
 @onready var game_over: ColorRect = $CanvasLayer/GameOver
 
+@onready var collectibles: Node = $Collectibles
+
 @onready var start_in: ColorRect = %StartIn
 @onready var start_in_label: Label = %StartInLabel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -12,16 +14,24 @@ extends Node2D
 @onready var timer_label: Label = %TimerLabel
 @onready var time_count: Timer = $CanvasLayer/TimeCount
 
-@onready var life_counter: ColorRect = $CanvasLayer/LifeCounter
 @onready var life_counter_label: Label = %LifeCounterLabel
+@onready var collectibles_counter_label_label: Label = %CollectiblesCounterLabelLabel
 
 var time_passed: int = 0
+var sardines_in_level: int
+var sardines_taken: int = 0
+
 
 func _ready() -> void:
 	Events.level_completed.connect(show_level_completed)
 	Events.game_over.connect(show_game_over)
+	Events.sardine_taken.connect(handle_sardine_taken)
 	Events.life_lost.connect(handle_life_lost)
+	
+	sardines_in_level = collectibles.get_child_count()
 	life_counter_label.text = "%1d/%1d" % [GameState.player_lives, GameState.MAX_PLAYER_LIVES]
+	collectibles_counter_label_label.text = "%d/%d" % [0, sardines_in_level]
+	
 	get_tree().paused = true
 	animation_player.play("countdown")
 	await get_tree().create_timer(3.0).timeout
@@ -54,6 +64,10 @@ func show_game_over() -> void:
 
 func handle_life_lost() -> void:
 	life_counter_label.text = "%1d/%1d" % [GameState.player_lives, GameState.MAX_PLAYER_LIVES]
+
+func handle_sardine_taken() -> void:
+	sardines_taken += 1
+	collectibles_counter_label_label.text = "%d/%d" % [sardines_taken, sardines_in_level]
 
 func _on_timer_timeout() -> void:
 	time_passed += 1

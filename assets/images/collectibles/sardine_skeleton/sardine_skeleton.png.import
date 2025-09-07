@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo22xxh2ndtrk"
-path="res://.godot/imported/sardine.png-7c02212fdd0a459d20e27f8182d45ce7.ctex"
+uid="uid://m8rhqxf06ybj"
+path="res://.godot/imported/sardine_skeleton.png-0214c942359bc6cbfc82f636e6518dd5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/collectibles/sardine/sardine.png"
-dest_files=["res://.godot/imported/sardine.png-7c02212fdd0a459d20e27f8182d45ce7.ctex"]
+source_file="res://assets/images/collectibles/sardine_skeleton/sardine_skeleton.png"
+dest_files=["res://.godot/imported/sardine_skeleton.png-0214c942359bc6cbfc82f636e6518dd5.ctex"]
 
 [params]
 
