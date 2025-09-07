@@ -9,6 +9,9 @@ extends CharacterBody2D
 var air_jump: bool = false
 var just_wall_jumped := false
 
+#TODO: this should be set within the danger, not here.
+const DAMAGE_TAKEN: int = 1
+
 func _physics_process(delta: float) -> void:
 	var input_axis := Input.get_axis("move_left", "move_right")
 	
@@ -94,4 +97,12 @@ func handle_character_orientation (input_axis: float) -> void:
 
 
 func _on_hazard_detector_area_entered(area: Area2D) -> void:
-	global_position = starting_position
+	GameState.remove_player_lives(DAMAGE_TAKEN)
+	
+	if not GameState.is_player_dead:
+		global_position = starting_position
+	else: 
+		print("Ha morido :(")
+		get_tree().paused = true
+		await get_tree().create_timer(2).timeout
+		get_tree().change_scene_to_file("res://scenes/ui/menu/start_menu.tscn")
