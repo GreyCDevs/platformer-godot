@@ -14,9 +14,11 @@ enum LEVELS {
 var game_data = {
 	LEVELS.LEVEL_ONE: {
 		"id": LEVELS.LEVEL_ONE,
+		"name": "Piupiolo",
 		"scene": "res://scenes/levels/test_level.tscn",
 		"best_time": 999999999,
 		"last_time": 0,
+		"score_board": [],
 		"next_level": {
 				"id": LEVELS.LEVEL_TWO,
 				"scene": "res://scenes/levels/second_test_level.tscn"
@@ -24,9 +26,11 @@ var game_data = {
 	},
 	LEVELS.LEVEL_TWO: {
 		"id": LEVELS.LEVEL_TWO,
+		"name": "Piupiolo 2",
 		"scene": "res://scenes/levels/second_test_level.tscn",
 		"best_time": 999999999,
 		"last_time": 0,
+		"score_board": [],
 		"next_level": null
 	}
 }
@@ -52,6 +56,11 @@ func handle_finished_level(level: LEVELS, time: int):
 
 	if time < finished_level.best_time:
 		finished_level.best_time = time
+	
+	finished_level.score_board.push({
+		"name": "El chonko",
+		"time": time
+	})
 	
 	game_data[level] = finished_level
 	if finished_level.next_level == null:
