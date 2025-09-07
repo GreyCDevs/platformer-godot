@@ -517,13 +517,13 @@ rotation = 1.5708
 position = Vector2(-330, -115)
 
 [node name="Spikes19" parent="." index="28" instance=ExtResource("6_s458d")]
-position = Vector2(176, -496)
+position = Vector2(147, -496)
 
 [node name="Spikes20" parent="." index="29" instance=ExtResource("6_s458d")]
 position = Vector2(114, -496)
 
 [node name="Spikes21" parent="." index="30" instance=ExtResource("6_s458d")]
-position = Vector2(267, -400)
+position = Vector2(241, -400)
 
 [node name="Spikes22" parent="." index="31" instance=ExtResource("6_s458d")]
 position = Vector2(182, -160)
