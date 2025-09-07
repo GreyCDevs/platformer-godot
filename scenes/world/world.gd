@@ -1,7 +1,5 @@
 extends Node2D
 
-@export var next_level: PackedScene
-
 @onready var level_completed: ColorRect = $CanvasLayer/LevelCompleted
 @onready var game_over: ColorRect = $CanvasLayer/GameOver
 
@@ -44,16 +42,21 @@ func _ready() -> void:
 	
 func show_level_completed() -> void:
 	level_completed.show()
+	var current_level = GameState.game_data[GameState.current_level]
+	var next_level = current_level.next_level
+	
 	get_tree().paused = true
 	await get_tree().create_timer(1.0).timeout
 
-	if not next_level is PackedScene: 
+	if next_level == null: 
 		get_tree().change_scene_to_file("res://scenes/ui/menu/start_menu.tscn")
 		return
 
+	#TODO: handle the level change better
+	GameState.current_level = next_level.id
 	await LevelTransition.fade_to_black()
 	get_tree().paused = false
-	get_tree().change_scene_to_packed(next_level)
+	get_tree().change_scene_to_file(next_level.scene)
 	LevelTransition.fade_from_black()
 
 func show_game_over() -> void:

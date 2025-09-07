@@ -3,18 +3,31 @@ extends Node
 const MAX_PLAYER_LIVES: int = 3
 var player_lives: int = 3
 var is_player_dead: bool = false
+const INITIAL_LEVEL: LEVELS = LEVELS.LEVEL_ONE
+var current_level: LEVELS
+
 enum LEVELS {
 	LEVEL_ONE,
 	LEVEL_TWO,
-	LEVEL_THREE,
-	LEVEL_FOUR
 }
 
 var game_data = {
 	LEVELS.LEVEL_ONE: {
+		"id": LEVELS.LEVEL_ONE,
 		"scene": "res://scenes/levels/test_level.tscn",
 		"best_time": 999999999,
-		"last_time": 0
+		"last_time": 0,
+		"next_level": {
+				"id": LEVELS.LEVEL_TWO,
+				"scene": "res://scenes/levels/second_test_level.tscn"
+			}
+	},
+	LEVELS.LEVEL_TWO: {
+		"id": LEVELS.LEVEL_TWO,
+		"scene": "res://scenes/levels/second_test_level.tscn",
+		"best_time": 999999999,
+		"last_time": 0,
+		"next_level": null
 	}
 }
 

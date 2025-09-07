@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b2oxr7coy8u2x" path="res://scenes/ui/menu/start_menu.gd" id="1_oxq7e"]
 
 [node name="StartMenu" type="CenterContainer"]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
