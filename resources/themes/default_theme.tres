@@ -14,3 +14,4 @@ Button/styles/hover = ExtResource("1_1ymaj")
 Button/styles/normal = ExtResource("1_0k5xl")
 Button/styles/pressed = ExtResource("1_0k5xl")
 Label/font_sizes/font_size = 6
+TextEdit/font_sizes/font_size = 6
