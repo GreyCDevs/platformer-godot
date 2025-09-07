@@ -23,6 +23,7 @@ func _physics_process(delta: float) -> void:
 	handle_wall_jump()
 	handle_jump()
 	handle_movement(input_axis, delta)
+	handle_running()
 	
 	var was_on_floor = is_on_floor()
 	move_and_slide()
@@ -69,6 +70,12 @@ func handle_movement(input_axis: float, delta: float) -> void:
 	handle_air_acceleration(input_axis, delta)
 	apply_friction(input_axis, delta)
 	apply_air_resistance(input_axis, delta)
+	
+func handle_running():
+	if Input.is_action_pressed("run") and is_on_floor():
+		movement_data = load("res://scenes/player/FasterMovementData.tres")
+	else:
+		movement_data = load("res://scenes/player/DefaultMovementData.tres")
 
 func apply_friction(input_axis: float, delta: float) -> void:
 	if input_axis == 0 and is_on_floor():
