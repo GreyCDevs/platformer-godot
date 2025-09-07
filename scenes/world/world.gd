@@ -8,6 +8,9 @@ extends Node2D
 @onready var start_in: ColorRect = %StartIn
 @onready var start_in_label: Label = %StartInLabel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+@onready var best_time_container: ColorRect = $CanvasLayer/BestTimeContainer
+@onready var best_time_label: Label = %BestTimeLabel
 @onready var timer_container: ColorRect = $CanvasLayer/TimerContainer
 @onready var timer_label: Label = %TimerLabel
 @onready var time_count: Timer = $CanvasLayer/TimeCount
@@ -29,6 +32,8 @@ func _ready() -> void:
 	sardines_in_level = collectibles.get_child_count()
 	life_counter_label.text = "%1d/%1d" % [GameState.player_lives, GameState.MAX_PLAYER_LIVES]
 	collectibles_counter_label_label.text = "%d/%d" % [0, sardines_in_level]
+	
+	handle_level_record()
 	
 	get_tree().paused = true
 	animation_player.play("countdown")
@@ -70,6 +75,16 @@ func handle_life_lost() -> void:
 func handle_sardine_taken() -> void:
 	sardines_taken += 1
 	collectibles_counter_label_label.text = "%d/%d" % [sardines_taken, sardines_in_level]
+
+func handle_level_record () -> void:
+	if not GameState.does_current_level_have_record(): return
+	var current_level_record = GameState.get_current_level_record()
+	var minutes = int(current_level_record / 60)
+	var seconds = current_level_record - minutes * 60
+	
+	best_time_label.text = "Record: %d:%02d" % [minutes, seconds]
+	best_time_container.show()
+	pass
 
 func _on_timer_timeout() -> void:
 	time_passed += 1

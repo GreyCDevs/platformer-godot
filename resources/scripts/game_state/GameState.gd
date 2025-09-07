@@ -71,3 +71,8 @@ func handle_finished_level(level: LEVELS, time: int):
 	
 	return finished_level.next_level
 	
+func does_current_level_have_record() -> bool: 
+	return game_data[current_level].score_board.size() > 0
+
+func get_current_level_record() -> int:
+	return game_data[current_level].best_time
