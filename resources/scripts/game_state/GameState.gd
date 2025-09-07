@@ -3,18 +3,35 @@ extends Node
 const MAX_PLAYER_LIVES: int = 3
 var player_lives: int = 3
 var is_player_dead: bool = false
+const INITIAL_LEVEL: LEVELS = LEVELS.LEVEL_ONE
+var current_level: LEVELS
+
 enum LEVELS {
 	LEVEL_ONE,
 	LEVEL_TWO,
-	LEVEL_THREE,
-	LEVEL_FOUR
 }
 
 var game_data = {
 	LEVELS.LEVEL_ONE: {
+		"id": LEVELS.LEVEL_ONE,
+		"name": "Piupiolo",
 		"scene": "res://scenes/levels/test_level.tscn",
 		"best_time": 999999999,
-		"last_time": 0
+		"last_time": 0,
+		"score_board": [],
+		"next_level": {
+				"id": LEVELS.LEVEL_TWO,
+				"scene": "res://scenes/levels/second_test_level.tscn"
+			}
+	},
+	LEVELS.LEVEL_TWO: {
+		"id": LEVELS.LEVEL_TWO,
+		"name": "Piupiolo 2",
+		"scene": "res://scenes/levels/second_test_level.tscn",
+		"best_time": 999999999,
+		"last_time": 0,
+		"score_board": [],
+		"next_level": null
 	}
 }
 
@@ -30,3 +47,32 @@ func remove_player_lives(lives: int) -> void:
 func reset_player_lives() -> void:
 	player_lives = MAX_PLAYER_LIVES
 	is_player_dead = false
+
+#NOTE: godot 4/gdscript does not handle well multitype returns
+#This returns Dictionary or null 
+func handle_finished_level(level: LEVELS, time: int):
+	var finished_level = game_data[level]
+	finished_level.last_time = time
+
+	if time < finished_level.best_time:
+		finished_level.best_time = time
+	
+	finished_level.score_board.append({
+		"name": "El chonko",
+		"time": time
+	})
+	
+	game_data[level] = finished_level
+	
+	if finished_level.next_level == null:
+		return null
+		
+	current_level = finished_level.next_level.id	
+	
+	return finished_level.next_level
+	
+func does_current_level_have_record() -> bool: 
+	return game_data[current_level].score_board.size() > 0
+
+func get_current_level_record() -> int:
+	return game_data[current_level].best_time
