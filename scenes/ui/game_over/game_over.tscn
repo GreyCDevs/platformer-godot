@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://m0amkyentqqi"]
+
+[ext_resource type="Script" uid="uid://vgvfnlv7fjta" path="res://scenes/ui/game_over/game_over.gd" id="1_pv8tt"]
+
+[node name="GameOver" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.72549)
+script = ExtResource("1_pv8tt")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "You died..."
+horizontal_alignment = 1
+
+[node name="ToStartMenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start Menu"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ToStartMenuButton" to="." method="_on_button_pressed"]
