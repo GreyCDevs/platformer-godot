@@ -20,10 +20,11 @@ var game_data = {
 		"best_time": 999999999,
 		"last_time": 0,
 		"score_board": [],
-		"next_level": {
-				"id": LEVELS.LEVEL_TWO,
-				"scene": "res://scenes/levels/second_test_level.tscn"
-			}
+		#"next_level": {
+				#"id": LEVELS.LEVEL_TWO,
+				#"scene": "res://scenes/levels/second_test_level.tscn"
+			#}
+		"next_level": null
 	},
 	LEVELS.LEVEL_TWO: {
 		"id": LEVELS.LEVEL_TWO,

@@ -50,14 +50,13 @@ func show_level_completed() -> void:
 	time_count.stop()
 	
 	var next_level = GameState.handle_finished_level(GameState.current_level, time_passed)
-	
-	get_tree().paused = true
-	await get_tree().create_timer(1.0).timeout
 
 	if next_level == null: 
-		get_tree().change_scene_to_file("res://scenes/ui/menu/start_menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/ui/game_finished/game_finished.tscn")
 		return
-
+	get_tree().paused = true
+	await get_tree().create_timer(1.0).timeout
+	
 	await LevelTransition.fade_to_black()
 	get_tree().paused = false
 	get_tree().change_scene_to_file(next_level.scene)
