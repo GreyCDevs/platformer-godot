@@ -7,10 +7,8 @@ func _ready() -> void:
 	start_game_button.grab_focus()
 
 func _on_start_game_button_pressed() -> void:
-	GameState.reset_player_lives()
 	await LevelTransition.fade_to_black()
-	GameState.current_level = GameState.INITIAL_LEVEL
-	get_tree().change_scene_to_file(GameState.game_data[GameState.INITIAL_LEVEL].scene)
+	get_tree().change_scene_to_file("res://scenes/ui/menu/player_name_selection/player_name_selection.tscn")
 	LevelTransition.fade_from_black()
 
 func _on_quit_game_button_pressed() -> void:

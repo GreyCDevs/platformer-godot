@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://div0uvvrxu0ci"]
+
+[ext_resource type="Script" uid="uid://vaccwpdq1lpd" path="res://scenes/ui/menu/player_name_selection/player_name_selection.gd" id="1_g2kgm"]
+
+[node name="CenterContainer" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -2.0
+offset_right = -23.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g2kgm")
+
+[node name="PlayerNameSelection" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerNameSelection"]
+layout_mode = 2
+text = "Enter your name:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="PlayerNameSelection"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PlayerNameSelection"]
+layout_mode = 2
+disabled = true
+text = "Play"
+
+[connection signal="text_changed" from="PlayerNameSelection/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="text_submitted" from="PlayerNameSelection/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="PlayerNameSelection/Button" to="." method="_on_button_pressed"]

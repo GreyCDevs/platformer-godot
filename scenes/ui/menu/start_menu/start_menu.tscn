@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://doa18s6y75p7h"]
 
-[ext_resource type="Script" uid="uid://b2oxr7coy8u2x" path="res://scenes/ui/menu/start_menu.gd" id="1_oxq7e"]
+[ext_resource type="Script" uid="uid://b2oxr7coy8u2x" path="res://scenes/ui/menu/start_menu/start_menu.gd" id="1_oxq7e"]
 
 [node name="StartMenu" type="CenterContainer"]
 process_mode = 3

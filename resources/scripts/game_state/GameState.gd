@@ -5,6 +5,7 @@ var player_lives: int = 3
 var is_player_dead: bool = false
 const INITIAL_LEVEL: LEVELS = LEVELS.LEVEL_ONE
 var current_level: LEVELS
+var player_name: String = 'El chonko'
 
 enum LEVELS {
 	LEVEL_ONE,
@@ -19,10 +20,11 @@ var game_data = {
 		"best_time": 999999999,
 		"last_time": 0,
 		"score_board": [],
-		"next_level": {
-				"id": LEVELS.LEVEL_TWO,
-				"scene": "res://scenes/levels/second_test_level.tscn"
-			}
+		#"next_level": {
+				#"id": LEVELS.LEVEL_TWO,
+				#"scene": "res://scenes/levels/second_test_level.tscn"
+			#}
+		"next_level": null
 	},
 	LEVELS.LEVEL_TWO: {
 		"id": LEVELS.LEVEL_TWO,
@@ -58,12 +60,12 @@ func handle_finished_level(level: LEVELS, time: int):
 		finished_level.best_time = time
 	
 	finished_level.score_board.append({
-		"name": "El chonko",
+		"name": player_name,
 		"time": time
 	})
 	
 	game_data[level] = finished_level
-	
+
 	if finished_level.next_level == null:
 		return null
 		
@@ -76,3 +78,6 @@ func does_current_level_have_record() -> bool:
 
 func get_current_level_record() -> int:
 	return game_data[current_level].best_time
+	
+func set_player_name(name: String) -> void:
+	player_name = name	
