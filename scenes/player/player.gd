@@ -64,8 +64,7 @@ func handle_wall_jump() -> void:
 		velocity.x = wall_normal.x * movement_data.speed
 		velocity.y = movement_data.jump_velocity
 		just_wall_jumped = true
-	elif (Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")): 
-		velocity.y = movement_data.jump_velocity * -0.2
+	
 		
 	
 func handle_movement(input_axis: float, delta: float) -> void:
@@ -107,9 +106,6 @@ func update_animations(input_axis: float) -> void:
 	if not is_on_floor() and not is_on_wall():
 		animated_sprite_2d.play("jump")
 	
-	elif is_on_wall_only():
-		animated_sprite_2d.flip_h = (input_axis > 0)
-		animated_sprite_2d.play("slide")
 
 func handle_character_orientation (input_axis: float) -> void:
 	animated_sprite_2d.flip_h = input_axis < 0
