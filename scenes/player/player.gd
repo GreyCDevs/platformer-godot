@@ -22,6 +22,7 @@ func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	handle_wall_jump()
 	handle_jump()
+	handle_slide(input_axis, delta)
 	handle_movement(input_axis, delta)
 	handle_running()
 	
@@ -92,6 +93,15 @@ func handle_acceleration(input_axis: float, delta: float) -> void:
 func handle_air_acceleration(input_axis: float, delta: float) -> void:
 	if is_on_floor(): return
 	velocity.x = move_toward(velocity.x, movement_data.speed * input_axis,movement_data.air_acceleration * delta)
+	
+func handle_slide(input_axis: float, delta: float) -> void:
+	if not is_on_wall_only(): return
+	var wall_normal = get_wall_normal()
+	
+	while Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
+		if is_on_wall_only() and wall_normal.x != 0:
+			velocity.y = 30
+		return
 
 func update_animations(input_axis: float) -> void:
 	if input_axis != 0:
@@ -101,7 +111,15 @@ func update_animations(input_axis: float) -> void:
 		animated_sprite_2d.play("idle")
 
 	if not is_on_floor():
-		animated_sprite_2d.play("jump")		
+		animated_sprite_2d.play("jump")
+	
+	if is_on_wall_only():
+		var wall_normal = get_wall_normal()
+		while Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
+			if is_on_wall_only() and wall_normal.x != 0:
+				animated_sprite_2d.flip_h = input_axis > 0
+				animated_sprite_2d.play("idle") #placeholder
+			return		
 
 func handle_character_orientation (input_axis: float) -> void:
 	animated_sprite_2d.flip_h = input_axis < 0
