@@ -57,12 +57,13 @@ func handle_finished_level(level: LEVELS, time: int):
 	if time < finished_level.best_time:
 		finished_level.best_time = time
 	
-	finished_level.score_board.push({
+	finished_level.score_board.append({
 		"name": "El chonko",
 		"time": time
 	})
 	
 	game_data[level] = finished_level
+	
 	if finished_level.next_level == null:
 		return null
 		
