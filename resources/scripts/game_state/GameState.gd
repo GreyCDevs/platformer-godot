@@ -10,26 +10,38 @@ var player_name: String = 'El chonko'
 enum LEVELS {
 	LEVEL_ONE,
 	LEVEL_TWO,
+	LEVEL_THREE
 }
 
 var game_data = {
 	LEVELS.LEVEL_ONE: {
 		"id": LEVELS.LEVEL_ONE,
-		"name": "Piupiolo",
-		"scene": "res://scenes/levels/test_level.tscn",
+		"name": "Level 1",
+		"scene": "res://scenes/levels/level_one.tscn",
 		"best_time": 999999999,
 		"last_time": 0,
 		"score_board": [],
-		#"next_level": {
-				#"id": LEVELS.LEVEL_TWO,
-				#"scene": "res://scenes/levels/second_test_level.tscn"
-			#}
-		"next_level": null
+		"next_level": {
+				"id": LEVELS.LEVEL_TWO,
+				"scene": "res://scenes/levels/level_two.tscn"
+			}
 	},
 	LEVELS.LEVEL_TWO: {
 		"id": LEVELS.LEVEL_TWO,
-		"name": "Piupiolo 2",
-		"scene": "res://scenes/levels/second_test_level.tscn",
+		"name": "Level 2",
+		"scene": "res://scenes/levels/level_two.tscn",
+		"best_time": 999999999,
+		"last_time": 0,
+		"score_board": [],
+		"next_level": {
+				"id": LEVELS.LEVEL_THREE,
+				"scene": "res://scenes/levels/level_three.tscn"
+			}
+	},
+	LEVELS.LEVEL_THREE: {
+		"id": LEVELS.LEVEL_THREE,
+		"name": "Level 2",
+		"scene": "res://scenes/levels/level_three.tscn",
 		"best_time": 999999999,
 		"last_time": 0,
 		"score_board": [],
