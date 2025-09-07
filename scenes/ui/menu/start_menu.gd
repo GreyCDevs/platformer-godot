@@ -7,9 +7,9 @@ func _ready() -> void:
 	start_game_button.grab_focus()
 
 func _on_start_game_button_pressed() -> void:
+	GameState.reset_player_lives()
 	await LevelTransition.fade_to_black()
-	# TODO: Add the initial level here and remove this comment
-	#get_tree().change_scene_to_file("res://scenes/world/level_one.tscn")
+	get_tree().change_scene_to_file("res://scenes/levels/test_level.tscn")
 	LevelTransition.fade_from_black()
 
 func _on_quit_game_button_pressed() -> void:

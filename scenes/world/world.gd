@@ -3,15 +3,25 @@ extends Node2D
 @export var next_level: PackedScene
 
 @onready var level_completed: ColorRect = $CanvasLayer/LevelCompleted
+@onready var game_over: ColorRect = $CanvasLayer/GameOver
+
 @onready var start_in: ColorRect = %StartIn
 @onready var start_in_label: Label = %StartInLabel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var timer_container: ColorRect = $CanvasLayer/TimerContainer
 @onready var timer_label: Label = %TimerLabel
+@onready var time_count: Timer = $CanvasLayer/TimeCount
+
+@onready var life_counter: ColorRect = $CanvasLayer/LifeCounter
+@onready var life_counter_label: Label = %LifeCounterLabel
 
 var time_passed: int = 0
 
 func _ready() -> void:
 	Events.level_completed.connect(show_level_completed)
+	Events.game_over.connect(show_game_over)
+	Events.life_lost.connect(handle_life_lost)
+	life_counter_label.text = "%1d/%1d" % [GameState.player_lives, GameState.MAX_PLAYER_LIVES]
 	get_tree().paused = true
 	animation_player.play("countdown")
 	await get_tree().create_timer(3.0).timeout
@@ -26,14 +36,24 @@ func show_level_completed() -> void:
 	level_completed.show()
 	get_tree().paused = true
 	await get_tree().create_timer(1.0).timeout
+
 	if not next_level is PackedScene: 
 		get_tree().change_scene_to_file("res://scenes/ui/menu/start_menu.tscn")
 		return
+
 	await LevelTransition.fade_to_black()
 	get_tree().paused = false
 	get_tree().change_scene_to_packed(next_level)
 	LevelTransition.fade_from_black()
 
+func show_game_over() -> void:
+	timer_container.hide()
+	time_count.stop()
+	game_over.show()
+	game_over.to_start_menu_button.grab_focus()
+
+func handle_life_lost() -> void:
+	life_counter_label.text = "%1d/%1d" % [GameState.player_lives, GameState.MAX_PLAYER_LIVES]
 
 func _on_timer_timeout() -> void:
 	time_passed += 1
