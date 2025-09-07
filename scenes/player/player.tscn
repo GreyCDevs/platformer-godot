@@ -144,7 +144,7 @@ movement_data = ExtResource("2_mxepk")
 z_index = 1
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_t3oqc")
-animation = &"slide"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.19209e-07, -25.5)

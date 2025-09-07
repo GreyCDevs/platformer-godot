@@ -14,6 +14,10 @@ extends Node2D
 @onready var timer_container: ColorRect = $CanvasLayer/TimerContainer
 @onready var timer_label: Label = %TimerLabel
 @onready var time_count: Timer = $CanvasLayer/TimeCount
+@onready var pause_menu = $CanvasLayer/PauseMenu
+
+
+
 
 @onready var life_counter_label: Label = %LifeCounterLabel
 @onready var collectibles_counter_label_label: Label = %CollectiblesCounterLabelLabel
@@ -24,6 +28,7 @@ var sardines_taken: int = 0
 
 
 func _ready() -> void:
+	
 	Events.level_completed.connect(show_level_completed)
 	Events.game_over.connect(show_game_over)
 	Events.sardine_taken.connect(handle_sardine_taken)
@@ -34,7 +39,6 @@ func _ready() -> void:
 	collectibles_counter_label_label.text = "%d/%d" % [0, sardines_in_level]
 	
 	handle_level_record()
-	
 	get_tree().paused = true
 	animation_player.play("countdown")
 	await get_tree().create_timer(3.0).timeout
@@ -44,6 +48,9 @@ func _ready() -> void:
 	if animation_player.animation_finished:
 		start_in.hide()
 	
+func _process(delta):
+	
+	handle_pause_menu_opened()	
 	
 func show_level_completed() -> void:
 	level_completed.show()
@@ -62,6 +69,17 @@ func show_level_completed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file(next_level.scene)
 	LevelTransition.fade_from_black()
+	
+func handle_pause_menu_opened() -> void:
+
+	if Input.is_action_just_pressed("pause") and not get_tree().paused:
+		pause_menu.resume_button.grab_focus()
+		get_tree().paused = true
+		pause_menu.show()
+	
+	elif Input.is_action_just_pressed("pause") and get_tree().paused:
+		pause_menu.hide()
+		get_tree().paused = false
 
 func show_game_over() -> void:
 	timer_container.hide()
