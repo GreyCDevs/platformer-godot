@@ -64,7 +64,7 @@ func handle_finished_level(level: LEVELS, time: int):
 	})
 	
 	game_data[level] = finished_level
-	
+
 	if finished_level.next_level == null:
 		return null
 		
