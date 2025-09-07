@@ -9,6 +9,7 @@ func remove_player_lives(lives: int) -> void:
 	if player_lives <= 0:
 		is_player_dead = true
 		player_lives = 0
+		Events.game_over.emit()
  
 func reset_player_lives() -> void:
 	player_lives = MAX_PLAYER_LIVES
