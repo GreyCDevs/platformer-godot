@@ -13,6 +13,10 @@ var just_wall_jumped := false
 const DAMAGE_TAKEN: int = 1
 
 func _physics_process(delta: float) -> void:
+	if GameState.is_player_dead: 
+		animated_sprite_2d.play("idle")
+		return
+	
 	var input_axis := Input.get_axis("move_left", "move_right")
 	
 	apply_gravity(delta)
@@ -100,10 +104,4 @@ func _on_hazard_detector_area_entered(area: Area2D) -> void:
 	GameState.remove_player_lives(DAMAGE_TAKEN)
 	
 	if not GameState.is_player_dead:
-		global_position = starting_position
-	else: 
-		print("Ha morido :(")
-		get_tree().paused = true
-		await get_tree().create_timer(2).timeout
-		get_tree().paused = false
-		get_tree().change_scene_to_file("res://scenes/ui/menu/start_menu.tscn")
+		global_position = starting_position	
