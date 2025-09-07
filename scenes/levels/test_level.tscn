@@ -9,7 +9,7 @@
 next_level = ExtResource("2_fr1um")
 
 [node name="player" parent="." index="0"]
-position = Vector2(82, 336)
+position = Vector2(138, 336)
 
 [node name="Spikes" parent="Hazards" index="0" instance=ExtResource("2_sn7cj")]
 position = Vector2(98, 336)

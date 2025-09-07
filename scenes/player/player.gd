@@ -118,7 +118,7 @@ func update_animations(input_axis: float) -> void:
 		while Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 			if is_on_wall_only() and wall_normal.x != 0:
 				animated_sprite_2d.flip_h = input_axis > 0
-				animated_sprite_2d.play("idle") #placeholder
+				animated_sprite_2d.play("slide") #placeholder
 			return		
 
 func handle_character_orientation (input_axis: float) -> void:
