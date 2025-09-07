@@ -43,3 +43,21 @@ func remove_player_lives(lives: int) -> void:
 func reset_player_lives() -> void:
 	player_lives = MAX_PLAYER_LIVES
 	is_player_dead = false
+
+#NOTE: godot 4/gdscript does not handle well multitype returns
+#This returns Dictionary or null 
+func handle_finished_level(level: LEVELS, time: int):
+	var finished_level = game_data[level]
+	finished_level.last_time = time
+
+	if time < finished_level.best_time:
+		finished_level.best_time = time
+	
+	game_data[level] = finished_level
+	if finished_level.next_level == null:
+		return null
+		
+	current_level = finished_level.next_level.id	
+	
+	return finished_level.next_level
+	
