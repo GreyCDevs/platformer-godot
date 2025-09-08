@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c06aj0lxhdc58" path="res://assets/images/character/clatyer.png" id="4_lvxji"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_myrg7"]
-atlas = ExtResource("3_lvxji")
-region = Rect2(192, 0, 64, 64)
+atlas = ExtResource("4_lvxji")
+region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
 atlas = ExtResource("4_lvxji")
@@ -154,9 +154,7 @@ movement_data = ExtResource("2_mxepk")
 z_index = 1
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_t3oqc")
-animation = &"run"
-frame = 6
-frame_progress = 0.738219
+animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7.5)
