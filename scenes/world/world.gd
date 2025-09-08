@@ -5,6 +5,7 @@ extends Node2D
 
 @onready var collectibles: Node = $Collectibles
 
+
 @onready var start_in: ColorRect = %StartIn
 @onready var start_in_label: Label = %StartInLabel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer

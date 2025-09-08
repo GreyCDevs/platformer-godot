@@ -1,18 +1,55 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwal5ust4jb7m"]
+[gd_scene load_steps=8 format=3 uid="uid://dwal5ust4jb7m"]
 
-[ext_resource type="Texture2D" uid="uid://bbv0vipxqfemh" path="res://resources/images/dangers/spikes.png" id="1_0ho60"]
+[ext_resource type="Texture2D" uid="uid://bpv5ypal3ps4k" path="res://assets/images/dangers/spikes.png" id="1_0ho60"]
 [ext_resource type="PackedScene" uid="uid://bhkb1xcvfol3j" path="res://scenes/dangers/hazard_area/hazard_area.tscn" id="2_7l3x5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7l3x5"]
+atlas = ExtResource("1_0ho60")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7wxn"]
+atlas = ExtResource("1_0ho60")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7l0ak"]
+atlas = ExtResource("1_0ho60")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wqqk"]
+atlas = ExtResource("1_0ho60")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pdf7a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7l3x5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7wxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7l0ak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wqqk")
+}],
+"loop": true,
+"name": &"spikes_default",
+"speed": 5.0
+}]
 
 [node name="Spikes" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, -8)
-texture = ExtResource("1_0ho60")
+sprite_frames = SubResource("SpriteFrames_pdf7a")
+animation = &"spikes_default"
 
 [node name="HazardArea" parent="." instance=ExtResource("2_7l3x5")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HazardArea"]
-polygon = PackedVector2Array(0, 0, 3, -5, 4, -5, 7, 0)
+polygon = PackedVector2Array(0, 0, 3, -8, 5, -8, 8, 0)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="HazardArea"]
-polygon = PackedVector2Array(8, 0, 11, -5, 12, -5, 15, 0)
+polygon = PackedVector2Array(8, 0, 11, -8, 13, -8, 15, 0)
