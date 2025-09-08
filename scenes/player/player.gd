@@ -14,7 +14,7 @@ const DAMAGE_TAKEN: int = 1
 
 func _physics_process(delta: float) -> void:
 	if GameState.is_player_dead: 
-		animated_sprite_2d.play("idle")
+		animated_sprite_2d.play("death")
 		return
 	
 	var input_axis := Input.get_axis("move_left", "move_right")
