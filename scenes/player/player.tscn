@@ -22,40 +22,40 @@ atlas = ExtResource("4_lvxji")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvxji"]
-atlas = ExtResource("3_lvxji")
-region = Rect2(256, 0, 64, 64)
+atlas = ExtResource("4_lvxji")
+region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0owmy"]
-atlas = ExtResource("3_lvxji")
-region = Rect2(320, 0, 64, 64)
+atlas = ExtResource("4_lvxji")
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qek5x"]
-atlas = ExtResource("3_lvxji")
-region = Rect2(384, 0, 64, 64)
+atlas = ExtResource("4_lvxji")
+region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5gtgg"]
-atlas = ExtResource("3_lvxji")
-region = Rect2(448, 0, 64, 64)
+atlas = ExtResource("4_lvxji")
+region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h17s1"]
-atlas = ExtResource("3_lvxji")
-region = Rect2(128, 0, 64, 64)
+atlas = ExtResource("4_lvxji")
+region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_je7p5"]
-atlas = ExtResource("3_lvxji")
-region = Rect2(256, 64, 64, 64)
+atlas = ExtResource("4_lvxji")
+region = Rect2(48, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fm80t"]
-atlas = ExtResource("3_lvxji")
-region = Rect2(320, 64, 64, 64)
+atlas = ExtResource("4_lvxji")
+region = Rect2(64, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gx1jg"]
-atlas = ExtResource("3_lvxji")
-region = Rect2(384, 64, 64, 64)
+atlas = ExtResource("4_lvxji")
+region = Rect2(80, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ugbui"]
-atlas = ExtResource("3_lvxji")
-region = Rect2(448, 64, 64, 64)
+atlas = ExtResource("4_lvxji")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fcs02"]
 atlas = ExtResource("3_lvxji")
@@ -117,9 +117,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ugbui")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h17s1")
 }],
 "loop": true,
 "name": &"run",
@@ -157,7 +154,9 @@ movement_data = ExtResource("2_mxepk")
 z_index = 1
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_t3oqc")
-animation = &"idle"
+animation = &"run"
+frame = 6
+frame_progress = 0.738219
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7.5)
