@@ -2,15 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://qvf4ea06wf2a" path="res://scenes/world/world_template.tscn" id="1_466fs"]
 [ext_resource type="PackedScene" uid="uid://bimx81jm3ddyv" path="res://scenes/tilemap/tilemap.tscn" id="2_7ry6i"]
-[ext_resource type="Texture2D" uid="uid://d12plbq7k3x4e" path="res://assets/images/tilesets/tileset.png" id="3_vmov0"]
 [ext_resource type="Texture2D" uid="uid://ci3g00frbo06l" path="res://assets/images/tilesets/slopes.png" id="4_7s1bx"]
+[ext_resource type="Texture2D" uid="uid://bhjhg4px6rjqn" path="res://assets/ase/tileset/tileset.png" id="5_7ry6i"]
 [ext_resource type="Texture2D" uid="uid://cdntg54ftfn48" path="res://assets/images/tilesets/slopes_flipped.png" id="5_jbu4w"]
 [ext_resource type="PackedScene" uid="uid://dwal5ust4jb7m" path="res://scenes/dangers/spikes/spikes.tscn" id="6_s458d"]
 [ext_resource type="PackedScene" uid="uid://ibkbt6ci18f8" path="res://scenes/collectibles/sardine/sardine.tscn" id="7_31lil"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4pegr"]
 resource_name = "autotile"
-texture = ExtResource("3_vmov0")
+texture = ExtResource("5_7ry6i")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
