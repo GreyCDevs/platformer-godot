@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://csjef0gbduwru"]
+
+[ext_resource type="Texture2D" uid="uid://hb1almm8yg5" path="res://assets/images/backgrounds/sky/sky_background.png" id="1_kc4h7"]
+
+[node name="SkyBackground" type="Node2D"]
+z_index = -2
+texture_filter = 1
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(720, 360)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("1_kc4h7")
