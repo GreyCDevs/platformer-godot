@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dwal5ust4jb7m" path="res://scenes/dangers/spikes/spikes.tscn" id="2_x63vl"]
 [ext_resource type="PackedScene" uid="uid://ibkbt6ci18f8" path="res://scenes/collectibles/sardine/sardine.tscn" id="3_nei2a"]
 
-[node name="WorldTemplate" instance=ExtResource("1_tn2yd")]
+[node name="WorldTemplate2" instance=ExtResource("1_tn2yd")]
 
 [node name="Spikes" parent="Hazards" index="0" instance=ExtResource("2_x63vl")]
 position = Vector2(-415, 416)
