@@ -111,7 +111,7 @@ func handle_character_orientation (input_axis: float) -> void:
 	animated_sprite_2d.flip_h = input_axis < 0
 
 
-func _on_hazard_detector_area_entered(area: Area2D) -> void:
+func _on_hazard_detector_area_entered(_area: Area2D) -> void:
 	GameState.remove_player_lives(DAMAGE_TAKEN)
 	
 	if not GameState.is_player_dead:

@@ -6,6 +6,8 @@ var is_player_dead: bool = false
 const INITIAL_LEVEL: LEVELS = LEVELS.LEVEL_ONE
 var current_level: LEVELS
 var player_name: String = 'El chonko'
+var back_from_score_board: String
+var score_board_disabled: bool = true
 
 enum LEVELS {
 	LEVEL_ONE,
@@ -65,6 +67,7 @@ func reset_player_lives() -> void:
 #NOTE: godot 4/gdscript does not handle well multitype returns
 #This returns Dictionary or null 
 func handle_finished_level(level: LEVELS, time: int):
+	score_board_disabled = false
 	var finished_level = game_data[level]
 	finished_level.last_time = time
 
@@ -91,5 +94,5 @@ func does_current_level_have_record() -> bool:
 func get_current_level_record() -> int:
 	return game_data[current_level].best_time
 	
-func set_player_name(name: String) -> void:
-	player_name = name	
+func set_player_name(new_name: String) -> void:
+	player_name = new_name

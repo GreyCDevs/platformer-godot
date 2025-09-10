@@ -14,11 +14,11 @@ func handle_start_game() -> void:
 	LevelTransition.fade_from_black()
 
 func handle_change_name(new_text: String) -> void:
-	var name = new_text.strip_edges()
-	if not name.length(): 
+	var player_name = new_text.strip_edges()
+	if not player_name.length(): 
 		button.disabled = true
 		return
-	GameState.set_player_name(name)
+	GameState.set_player_name(player_name)
 	button.disabled = false
 
 func _on_button_pressed() -> void:
