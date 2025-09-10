@@ -92,5 +92,5 @@ func does_current_level_have_record() -> bool:
 func get_current_level_record() -> int:
 	return game_data[current_level].best_time
 	
-func set_player_name(name: String) -> void:
-	player_name = name	
+func set_player_name(new_name: String) -> void:
+	player_name = new_name

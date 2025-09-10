@@ -3,6 +3,8 @@ extends ColorRect
 @onready var to_start_menu_button: Button = %ToStartMenuButton
 @onready var scoreboard_menu_button: Button = %ScoreboardMenuButton
 
+func _ready() -> void:
+	to_start_menu_button.grab_focus()
 
 func _on_button_pressed() -> void:
 	await LevelTransition.fade_to_black()

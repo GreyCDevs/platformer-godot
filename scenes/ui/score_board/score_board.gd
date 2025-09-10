@@ -1,9 +1,10 @@
 extends ColorRect
 
-@onready var to_start_menu_button: Button = %ToStartMenuButton
 @onready var v_box_container: VBoxContainer = $CenterContainer/VBoxContainer
+@onready var go_back_button: Button = %GoBackButton
 
 func _ready() -> void:
+	go_back_button.grab_focus()
 	var game_data = GameState.game_data
 	for level in game_data:
 		var level_data = game_data[level]

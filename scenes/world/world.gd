@@ -49,8 +49,7 @@ func _ready() -> void:
 	if animation_player.animation_finished:
 		start_in.hide()
 	
-func _process(delta):
-	
+func _process(_delta):
 	handle_pause_menu_opened()	
 	
 func show_level_completed() -> void:
