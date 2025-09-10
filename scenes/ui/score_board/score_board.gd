@@ -1,6 +1,7 @@
 extends ColorRect
 
-@onready var v_box_container: VBoxContainer = $CenterContainer/VBoxContainer
+@onready var score_board_container: VBoxContainer = %ScoreBoardContainer
+
 @onready var go_back_button: Button = %GoBackButton
 
 func _ready() -> void:
@@ -16,7 +17,7 @@ func _ready() -> void:
 		game_level_name_label.text = "Level name: " + level_data.name
 	
 		var separator_label = Label.new()
-		separator_label.set_name("label-for-" + level_data.name)
+		separator_label.set_name("separator-label-for-" + level_data.name)
 		separator_label.text = "------"
 		
 		var score_board = level_data.score_board
@@ -26,19 +27,21 @@ func _ready() -> void:
 		score_board = score_board.filter(func (a): return a != null)
 		
 		
-		v_box_container.add_child(game_level_name_label)
-		v_box_container.add_child(separator_label)
+		score_board_container.add_child(game_level_name_label)
+		score_board_container.add_child(separator_label)
 		for score in score_board:
 			if score == null:
 				continue
 			var score_label = Label.new()
 			var minutes = int(score.time / 60)
 			var seconds = score.time - minutes * 60
-	
-			score_label.set_name("label-for-" + score.name)
+			var score_separator_label = Label.new()
+			score_separator_label.set_name("separator-label-for-" + level_data.name)
+			score_separator_label.text = "------"
+			score_label.set_name("score-label-for-" + score.name)
 			score_label.text = score.name + ": %d:%02d" % [minutes, seconds]
-			v_box_container.add_child(score_label)
-			v_box_container.add_child(separator_label)
+			score_board_container.add_child(score_label)
+			score_board_container.add_child(score_separator_label)
 			
 
 func _on_button_pressed() -> void:
