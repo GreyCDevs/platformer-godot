@@ -5,6 +5,7 @@ extends CenterContainer
 func _ready() -> void:
 	RenderingServer.set_default_clear_color("black")
 	start_game_button.grab_focus()
+	get_tree().paused = false
 
 func _on_start_game_button_pressed() -> void:
 	await LevelTransition.fade_to_black()
