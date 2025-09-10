@@ -1,46 +1,18 @@
 extends ColorRect
 
 @onready var to_start_menu_button: Button = %ToStartMenuButton
-@onready var v_box_container: VBoxContainer = $CenterContainer/VBoxContainer
+@onready var scoreboard_menu_button: Button = %ScoreboardMenuButton
 
-func _ready() -> void:
-	var game_data = GameState.game_data
-	for level in game_data:
-		var level_data = game_data[level]
-		if level_data.score_board.size() <= 0:
-			continue
-		
-		var game_level_name_label = Label.new()
-		game_level_name_label.set_name("label-for-" + level_data.name)
-		game_level_name_label.text = "Level name: " + level_data.name
-	
-		var separator_label = Label.new()
-		separator_label.set_name("label-for-" + level_data.name)
-		separator_label.text = "------"
-		
-		var score_board = level_data.score_board
-		score_board = score_board.filter(func (a): return a != null)
-		score_board.sort_custom(func(a, b): return a.time < b.time)
-		score_board.resize(3)
-		score_board = score_board.filter(func (a): return a != null)
-		
-		
-		v_box_container.add_child(game_level_name_label)
-		v_box_container.add_child(separator_label)
-		for score in score_board:
-			if score == null:
-				continue
-			var score_label = Label.new()
-			var minutes = int(score.time / 60)
-			var seconds = score.time - minutes * 60
-	
-			score_label.set_name("label-for-" + score.name)
-			score_label.text = score.name + ": %d:%02d" % [minutes, seconds]
-			v_box_container.add_child(score_label)
-			v_box_container.add_child(separator_label)
-			
 
 func _on_button_pressed() -> void:
 	await LevelTransition.fade_to_black()
 	get_tree().change_scene_to_file("res://scenes/ui/menu/start_menu/start_menu.tscn")
+	LevelTransition.fade_from_black()
+
+
+func _on_scoreboard_menu_button_pressed() -> void:
+	GameState.back_from_score_board = "res://scenes/ui/game_finished/game_finished.tscn"
+	
+	await LevelTransition.fade_to_black()
+	get_tree().change_scene_to_file("res://scenes/ui/score_board/score_board.tscn")
 	LevelTransition.fade_from_black()

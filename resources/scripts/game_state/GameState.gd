@@ -6,6 +6,7 @@ var is_player_dead: bool = false
 const INITIAL_LEVEL: LEVELS = LEVELS.LEVEL_ONE
 var current_level: LEVELS
 var player_name: String = 'El chonko'
+var back_from_score_board: String
 
 enum LEVELS {
 	LEVEL_ONE,
