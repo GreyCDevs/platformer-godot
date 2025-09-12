@@ -17,4 +17,4 @@ func _on_quit_to_main_menu_button_pressed():
 	GameState.reset_player_lives()
 	await LevelTransition.fade_to_black() 
 	LevelTransition.fade_from_black()
-	get_tree().change_scene_to_file("res://scenes/ui/menu/start_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/menu/start_menu/start_menu.tscn")
