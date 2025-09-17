@@ -14,7 +14,7 @@ script = ExtResource("1_oxq7e")
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="StartGameButton" type="Button" parent="VBoxContainer"]
+[node name="StartGameButton" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
@@ -24,12 +24,12 @@ focus_next = NodePath("../QuitGameButton")
 focus_previous = NodePath("../QuitGameButton")
 text = "Start Game"
 
-[node name="ScoreBoardButton" type="Button" parent="VBoxContainer"]
+[node name="ScoreBoardButton" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Scoreboard"
 
-[node name="QuitGameButton" type="Button" parent="VBoxContainer"]
+[node name="QuitGameButton" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
 focus_neighbor_top = NodePath("../StartGameButton")
