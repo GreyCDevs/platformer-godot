@@ -15,7 +15,6 @@ func _on_start_game_button_pressed() -> void:
 func _on_quit_game_button_pressed() -> void:
 	get_tree().quit()
 
-
 func _on_score_board_button_pressed() -> void:
 	GameState.back_from_score_board = "res://scenes/ui/menu/start_menu/start_menu.tscn"
 	SceneManager.handle_change_scene("res://scenes/ui/score_board/score_board.tscn")

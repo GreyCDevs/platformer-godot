@@ -17,9 +17,6 @@ extends Node2D
 @onready var time_count: Timer = $CanvasLayer/TimeCount
 @onready var pause_menu = $CanvasLayer/PauseMenu
 
-
-
-
 @onready var life_counter_label: Label = %LifeCounterLabel
 @onready var collectibles_counter_label_label: Label = %CollectiblesCounterLabelLabel
 
@@ -59,7 +56,7 @@ func show_level_completed() -> void:
 
 	if next_level == null: 
 		SceneManager.handle_change_scene("res://scenes/ui/game_finished/game_finished.tscn")
-		pass
+		return
 	get_tree().paused = true
 	await get_tree().create_timer(1.0).timeout
 	get_tree().paused = false
@@ -90,7 +87,7 @@ func handle_sardine_taken() -> void:
 	collectibles_counter_label_label.text = "%d/%d" % [sardines_taken, sardines_in_level]
 
 func handle_level_record () -> void:
-	if not GameState.does_current_level_have_record(): pass
+	if not GameState.does_current_level_have_record(): return
 	var current_level_record = GameState.get_current_level_record()
 	var minutes = int(current_level_record / 60)
 	var seconds = current_level_record - minutes * 60
