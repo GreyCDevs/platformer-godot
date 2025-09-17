@@ -53,6 +53,7 @@ func _process(_delta):
 	handle_pause_menu_opened()
 	
 	
+	
 func play_music():
 	audio_stream_player.play()
 		

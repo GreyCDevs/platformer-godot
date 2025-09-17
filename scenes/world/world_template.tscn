@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bimx81jm3ddyv" path="res://scenes/tilemap/tilemap.tscn" id="6_k8b1u"]
 [ext_resource type="Texture2D" uid="uid://cbjo72byuuam1" path="res://assets/images/collectibles/sardine/16p_inverted_sardine.png" id="7_vtms1"]
 [ext_resource type="PackedScene" uid="uid://csjef0gbduwru" path="res://scenes/world/backgrounds/sky_background.tscn" id="9_llwdv"]
-[ext_resource type="AudioStream" uid="uid://53nj3cldtnxc" path="res://assets/sounds/music/catventures.wav" id="12_jt0vh"]
+[ext_resource type="AudioStream" uid="uid://7xtsd3xb5v7b" path="res://assets/sounds/music/catventures.mp3" id="12_jt0vh"]
 
 [sub_resource type="Animation" id="Animation_hkyxq"]
 length = 0.001
