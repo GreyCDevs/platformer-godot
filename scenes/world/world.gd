@@ -29,7 +29,6 @@ var sardines_taken: int = 0
 
 
 func _ready() -> void:
-	
 	Events.level_completed.connect(show_level_completed)
 	Events.game_over.connect(show_game_over)
 	Events.sardine_taken.connect(handle_sardine_taken)
@@ -50,7 +49,7 @@ func _ready() -> void:
 		start_in.hide()
 	
 func _process(_delta):
-	handle_pause_menu_opened()	
+	handle_pause_menu_opened()
 	
 func show_level_completed() -> void:
 	level_completed.show()
@@ -59,16 +58,13 @@ func show_level_completed() -> void:
 	var next_level = GameState.handle_finished_level(GameState.current_level, time_passed)
 
 	if next_level == null: 
-		get_tree().change_scene_to_file("res://scenes/ui/game_finished/game_finished.tscn")
-		return
+		SceneManager.handle_change_scene("res://scenes/ui/game_finished/game_finished.tscn")
+		pass
 	get_tree().paused = true
 	await get_tree().create_timer(1.0).timeout
-	
-	await LevelTransition.fade_to_black()
 	get_tree().paused = false
-	get_tree().change_scene_to_file(next_level.scene)
-	LevelTransition.fade_from_black()
-	
+	SceneManager.handle_change_scene(next_level.scene)
+
 func handle_pause_menu_opened() -> void:
 
 	if Input.is_action_just_pressed("pause") and not get_tree().paused:
@@ -94,14 +90,13 @@ func handle_sardine_taken() -> void:
 	collectibles_counter_label_label.text = "%d/%d" % [sardines_taken, sardines_in_level]
 
 func handle_level_record () -> void:
-	if not GameState.does_current_level_have_record(): return
+	if not GameState.does_current_level_have_record(): pass
 	var current_level_record = GameState.get_current_level_record()
 	var minutes = int(current_level_record / 60)
 	var seconds = current_level_record - minutes * 60
 	
 	best_time_label.text = "Record: %d:%02d" % [minutes, seconds]
 	best_time_container.show()
-	pass
 
 func _on_timer_timeout() -> void:
 	time_passed += 1
