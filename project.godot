@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Events="*res://resources/scripts/events/Events.gd"
 LevelTransition="*res://resources/transitions/level/level_transition.tscn"
 GameState="*res://resources/scripts/game_state/GameState.gd"
+SceneManager="*res://resources/scripts/scene_manager/SceneManager.gd"
 
 [display]
 
