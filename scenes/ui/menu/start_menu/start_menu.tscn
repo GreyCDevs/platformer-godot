@@ -79,7 +79,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_jwf5b")
 
 [node name="Title" type="Sprite2D" parent="."]
-position = Vector2(160, 48)
+position = Vector2(160, 58)
 texture = ExtResource("4_cado8")
 
 [connection signal="pressed" from="StartMenu/VBoxContainer/StartGameButton" to="StartMenu" method="_on_start_game_button_pressed"]
