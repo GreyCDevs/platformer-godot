@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://qvf4ea06wf2a"]
+[gd_scene load_steps=16 format=3 uid="uid://qvf4ea06wf2a"]
 
 [ext_resource type="Script" uid="uid://dcbwj3mc75n72" path="res://scenes/world/world.gd" id="1_wx2y6"]
 [ext_resource type="PackedScene" uid="uid://1rrvx57k2cva" path="res://scenes/player/player.tscn" id="2_dcncw"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://romfrcc8qrho" path="res://scenes/ui/level/level_completed.tscn" id="5_vtms1"]
 [ext_resource type="PackedScene" uid="uid://dx021munrhlss" path="res://scenes/ui/icons/health/sardine_health.tscn" id="5_wx2y6"]
 [ext_resource type="PackedScene" uid="uid://cmo3a5is2oema" path="res://scenes/ui/icons/collectibles/sardine_collectible.tscn" id="6_dcncw"]
+[ext_resource type="Texture2D" uid="uid://5dm47s178cyn" path="res://assets/images/collectibles/sardine_skeleton/sardine_skeleton_2.png" id="6_jt0vh"]
 [ext_resource type="PackedScene" uid="uid://bimx81jm3ddyv" path="res://scenes/tilemap/tilemap.tscn" id="6_k8b1u"]
 [ext_resource type="Texture2D" uid="uid://cbjo72byuuam1" path="res://assets/images/collectibles/sardine/16p_inverted_sardine.png" id="7_vtms1"]
 [ext_resource type="PackedScene" uid="uid://csjef0gbduwru" path="res://scenes/world/backgrounds/sky_background.tscn" id="9_llwdv"]
@@ -162,6 +163,9 @@ anchors_preset = -1
 anchor_left = 0.0454545
 anchor_right = 0.954545
 anchor_bottom = 1.07143
+offset_left = 8.955
+offset_right = -7.04498
+offset_bottom = -1.90735e-05
 grow_horizontal = 2
 metadata/_edit_use_anchors_ = true
 
@@ -173,11 +177,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SardineHealth" parent="CanvasLayer/LifeCounter/CenterContainer" instance=ExtResource("5_wx2y6")]
-position = Vector2(2, 6)
+position = Vector2(-1.95499, 7)
+texture = ExtResource("6_jt0vh")
 
 [node name="CollectiblesCounter" type="ColorRect" parent="CanvasLayer"]
-offset_left = 3.0
-offset_right = 47.0
+offset_left = 5.0
+offset_right = 29.0
 offset_bottom = 14.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -200,7 +205,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SardineHealth" parent="CanvasLayer/CollectiblesCounter/CenterContainer" instance=ExtResource("6_dcncw")]
-position = Vector2(2, 6)
+position = Vector2(-3.81818, 7)
 texture = ExtResource("7_vtms1")
 
 [node name="StartIn" type="ColorRect" parent="CanvasLayer"]
