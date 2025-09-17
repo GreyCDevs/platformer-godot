@@ -46,6 +46,4 @@ func _ready() -> void:
 
 func _on_button_pressed() -> void:
 	if GameState.back_from_score_board == null: return
-	await LevelTransition.fade_to_black()
-	get_tree().change_scene_to_file(GameState.back_from_score_board)
-	LevelTransition.fade_from_black()
+	SceneManager.handle_change_scene(GameState.back_from_score_board)
