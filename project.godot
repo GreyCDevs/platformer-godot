@@ -30,6 +30,10 @@ window/size/window_width_override=1440
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+Buttons=""
+
 [gui]
 
 theme/custom="uid://de2m1k14qpprn"
