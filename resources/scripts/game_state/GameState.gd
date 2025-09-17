@@ -42,7 +42,7 @@ var game_data = {
 	},
 	LEVELS.LEVEL_THREE: {
 		"id": LEVELS.LEVEL_THREE,
-		"name": "Level 2",
+		"name": "Level 3",
 		"scene": "res://scenes/levels/level_three.tscn",
 		"best_time": 999999999,
 		"last_time": 0,
