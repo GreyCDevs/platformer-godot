@@ -9,6 +9,8 @@ extends Node2D
 @onready var start_in: ColorRect = %StartIn
 @onready var start_in_label: Label = %StartInLabel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
 
 @onready var best_time_container: ColorRect = $CanvasLayer/BestTimeContainer
 @onready var best_time_label: Label = %BestTimeLabel
@@ -23,6 +25,7 @@ extends Node2D
 var time_passed: int = 0
 var sardines_in_level: int
 var sardines_taken: int = 0
+
 
 
 func _ready() -> void:
@@ -44,10 +47,15 @@ func _ready() -> void:
 	animation_player.play("hide_start_label")
 	if animation_player.animation_finished:
 		start_in.hide()
+	play_music()
 	
 func _process(_delta):
 	handle_pause_menu_opened()
 	
+	
+func play_music():
+	audio_stream_player.play()
+		
 func show_level_completed() -> void:
 	level_completed.show()
 	time_count.stop()

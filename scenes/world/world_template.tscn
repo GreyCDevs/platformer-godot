@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://qvf4ea06wf2a"]
+[gd_scene load_steps=17 format=3 uid="uid://qvf4ea06wf2a"]
 
 [ext_resource type="Script" uid="uid://dcbwj3mc75n72" path="res://scenes/world/world.gd" id="1_wx2y6"]
 [ext_resource type="PackedScene" uid="uid://1rrvx57k2cva" path="res://scenes/player/player.tscn" id="2_dcncw"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bimx81jm3ddyv" path="res://scenes/tilemap/tilemap.tscn" id="6_k8b1u"]
 [ext_resource type="Texture2D" uid="uid://cbjo72byuuam1" path="res://assets/images/collectibles/sardine/16p_inverted_sardine.png" id="7_vtms1"]
 [ext_resource type="PackedScene" uid="uid://csjef0gbduwru" path="res://scenes/world/backgrounds/sky_background.tscn" id="9_llwdv"]
+[ext_resource type="AudioStream" uid="uid://53nj3cldtnxc" path="res://assets/sounds/music/catventures.wav" id="12_jt0vh"]
 
 [sub_resource type="Animation" id="Animation_hkyxq"]
 length = 0.001
@@ -245,5 +246,8 @@ process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_wx2y6")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_jt0vh")
 
 [connection signal="timeout" from="CanvasLayer/TimeCount" to="." method="_on_timer_timeout"]
